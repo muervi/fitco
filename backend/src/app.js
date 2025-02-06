@@ -3,12 +3,12 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const authRoutes = require('./routes/authRoute');
-const appointmentRoutes = require('./routes/authRoute')
+const appointmentRoutes = require('./routes/appointmentRoute')
 const authMiddleware = require('./middleware/authMiddleware');
 
 const app = express();
 
-
+require('dotenv').config(); 
 app.use(cors());  
 app.use(morgan('dev'));  
 app.use(bodyParser.json()); 

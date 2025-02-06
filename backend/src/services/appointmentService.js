@@ -1,21 +1,17 @@
 const { Appointment } = require('../models');
-const moment = require('moment');
 
-exports.getAvailableAppointments = async () => {
-  try {
-    const now = moment();
-    const appointments = await Appointment.findAll({
-      where: {
-        date: { $gt: now.format('YYYY-MM-DD HH:mm:ss') },
-        status: 'available'
-      }
-    });
-    return appointments;
-  } catch (err) {
-    throw new Error('Error while getting appointments');
-  }
-};
-
+exports.getAllAppointments = async () => {
+    try {
+      const appointments = await Appointment.findAll({
+        where: {          
+          status: 'booked'
+        }
+      });
+      return appointments;
+    } catch (err) {
+      throw new Error('Error while getting appointments');
+    }
+  };
 exports.createAppointment = async (date, userId) => {
   try {
     const appointment = await Appointment.create({

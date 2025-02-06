@@ -2,7 +2,7 @@ const appointmentService = require('../services/appointmentService');
 
 exports.getAppointments = async (req, res) => {
   try {
-    const appointments = await appointmentService.getAvailableAppointments();
+    const appointments = await appointmentService.getAllAppointments();
     return res.json(appointments);
   } catch (err) {
     return res.status(500).json({ message: 'Error in the server', error: err.message });
